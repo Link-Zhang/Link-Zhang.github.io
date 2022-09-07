@@ -21,28 +21,30 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"link-zhang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="个人简介本人半个死肥宅，热爱塞尔达传说、仙剑奇侠传、诛仙，喜欢游戏、小说，尝鲜新技术。无奈本人记忆属鱼的，就将博客也当作半个云笔记吧，哈哈！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="关于博主">
-<meta property="og:url" content="http://link-zhang.github.io/about/index.html">
+    <meta name="description" content="Consul Commands123456consul agent -dev -ui -client&#x3D;0.0.0.0consul agent -server -bootstrap-expect&#x3D;3  -data-dir&#x3D;&#x2F;tmp&#x2F;consul -ui -client&#x3D;0.0.0.0 -bind&#x3D;172.17.0.2 -node&#x3D;server1consul agent -data-dir&#x3D;&#x2F;tmp&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Consul">
+<meta property="og:url" content="http://link-zhang.github.io/2022/09/07/consul/index.html">
 <meta property="og:site_name" content="Link Zhang">
-<meta property="og:description" content="个人简介本人半个死肥宅，热爱塞尔达传说、仙剑奇侠传、诛仙，喜欢游戏、小说，尝鲜新技术。无奈本人记忆属鱼的，就将博客也当作半个云笔记吧，哈哈！">
+<meta property="og:description" content="Consul Commands123456consul agent -dev -ui -client&#x3D;0.0.0.0consul agent -server -bootstrap-expect&#x3D;3  -data-dir&#x3D;&#x2F;tmp&#x2F;consul -ui -client&#x3D;0.0.0.0 -bind&#x3D;172.17.0.2 -node&#x3D;server1consul agent -data-dir&#x3D;&#x2F;tmp&#x2F;">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-09-07T01:05:23.000Z">
-<meta property="article:modified_time" content="2022-09-07T01:05:23.000Z">
+<meta property="og:image" content="http://link-zhang.github.io/images/consul/00.png">
+<meta property="article:published_time" content="2022-09-06T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-09-07T08:27:32.000Z">
 <meta property="article:author" content="Link Zhang">
+<meta property="article:tag" content="consul">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://link-zhang.github.io/images/consul/00.png">
 
 
-<link rel="canonical" href="http://link-zhang.github.io/about/">
+<link rel="canonical" href="http://link-zhang.github.io/2022/09/07/consul/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"en","comments":"","permalink":"http://link-zhang.github.io/about/index.html","path":"about/index.html","title":"关于博主"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://link-zhang.github.io/2022/09/07/consul/","path":"2022/09/07/consul/","title":"Consul"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>关于博主 | Link Zhang
-</title>
+<title>Consul | Link Zhang</title>
   
 
 
@@ -149,7 +151,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%AA%E4%BA%BA%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">个人简介</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Consul-Commands"><span class="nav-number">1.</span> <span class="nav-text">Consul Commands</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Consul-Ports"><span class="nav-number">2.</span> <span class="nav-text">Consul Ports</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Consul%E7%BB%93%E6%9E%84%E5%9B%BE"><span class="nav-number">3.</span> <span class="nav-text">Consul结构图</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -213,35 +215,158 @@
 </noscript>
 
 
-    <div class="main-inner page posts-expand">
+    <div class="main-inner post posts-expand">
 
 
-    
-    
-    
-    <div class="post-block" lang="en"><header class="post-header">
+  
 
-<h1 class="post-title" itemprop="name headline">关于博主
-</h1>
 
-<div class="post-meta-container">
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://link-zhang.github.io/2022/09/07/consul/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/link.png">
+      <meta itemprop="name" content="Link Zhang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Link Zhang">
+      <meta itemprop="description" content="What I wrote is not codes, but bugs.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Consul | Link Zhang">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Consul
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>1 mins.</span>
+    </span>
 </div>
 
-</header>
+        </div>
+      </header>
 
-      
-      
-      <div class="post-body">
-          <h1 id="个人简介"><a href="#个人简介" class="headerlink" title="个人简介"></a>个人简介</h1><p>本人半个死肥宅，热爱塞尔达传说、仙剑奇侠传、诛仙，喜欢游戏、小说，尝鲜新技术。无奈本人记忆属鱼的，就将博客也当作半个云笔记吧，哈哈！</p>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Consul-Commands"><a href="#Consul-Commands" class="headerlink" title="Consul Commands"></a>Consul Commands</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">consul agent -dev -ui -client=0.0.0.0</span><br><span class="line">consul agent -server -bootstrap-expect=3  -data-dir=/tmp/consul -ui -client=0.0.0.0 -<span class="built_in">bind</span>=172.17.0.2 -node=server1</span><br><span class="line">consul agent -data-dir=/tmp/consul -ui -client=0.0.0.0 -node=client1</span><br><span class="line">consul <span class="built_in">join</span> 172.17.0.2</span><br><span class="line">consul members</span><br><span class="line">consul operator raft list-peers</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
 
-      </div>
-      
-      
-      
+<h1 id="Consul-Ports"><a href="#Consul-Ports" class="headerlink" title="Consul Ports"></a>Consul Ports</h1><table>
+<thead>
+<tr>
+<th align="center">端口号</th>
+<th align="center">协议</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">8300</td>
+<td align="center">TCP</td>
+<td align="center">Agent Server处理其它agent的请求</td>
+</tr>
+<tr>
+<td align="center">8301</td>
+<td align="center">TCP、UDP</td>
+<td align="center">Agent处理lan中的gossip</td>
+</tr>
+<tr>
+<td align="center">8302</td>
+<td align="center">TCP、UDP</td>
+<td align="center">Agent处理wan中的gossip</td>
+</tr>
+<tr>
+<td align="center">8400</td>
+<td align="center">TCP</td>
+<td align="center">Agent处理CLI来的RPC请求</td>
+</tr>
+<tr>
+<td align="center">8500</td>
+<td align="center">TCP</td>
+<td align="center">Agent处理HTTP的CLI</td>
+</tr>
+<tr>
+<td align="center">8600</td>
+<td align="center">TCP、UDP</td>
+<td align="center">Agent处理DNS查询</td>
+</tr>
+</tbody></table>
+<h1 id="Consul结构图"><a href="#Consul结构图" class="headerlink" title="Consul结构图"></a>Consul结构图</h1><p><img src="/images/consul/00.png" alt="Consul结构图"></p>
+
     </div>
 
     
     
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee.</div>
+  <button>
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="Link Zhang WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="Link Zhang Alipay">
+        <span>Alipay</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/consul/" rel="tag"># consul</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/09/07/distributed/" rel="prev" title="Distributed Algorithm">
+                  <i class="fa fa-chevron-left"></i> Distributed Algorithm
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
 
 
 </div>

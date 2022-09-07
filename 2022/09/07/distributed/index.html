@@ -21,28 +21,34 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"link-zhang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="个人简介本人半个死肥宅，热爱塞尔达传说、仙剑奇侠传、诛仙，喜欢游戏、小说，尝鲜新技术。无奈本人记忆属鱼的，就将博客也当作半个云笔记吧，哈哈！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="关于博主">
-<meta property="og:url" content="http://link-zhang.github.io/about/index.html">
+    <meta name="description" content="Raft算法动画">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Distributed Algorithm">
+<meta property="og:url" content="http://link-zhang.github.io/2022/09/07/distributed/index.html">
 <meta property="og:site_name" content="Link Zhang">
-<meta property="og:description" content="个人简介本人半个死肥宅，热爱塞尔达传说、仙剑奇侠传、诛仙，喜欢游戏、小说，尝鲜新技术。无奈本人记忆属鱼的，就将博客也当作半个云笔记吧，哈哈！">
+<meta property="og:description" content="Raft算法动画">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-09-07T01:05:23.000Z">
-<meta property="article:modified_time" content="2022-09-07T01:05:23.000Z">
+<meta property="og:image" content="http://link-zhang.github.io/images/distributed/00.png">
+<meta property="og:image" content="http://link-zhang.github.io/images/distributed/01.png">
+<meta property="og:image" content="http://link-zhang.github.io/images/distributed/02.png">
+<meta property="og:image" content="http://link-zhang.github.io/images/distributed/03.png">
+<meta property="article:published_time" content="2022-09-06T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-09-07T09:01:41.000Z">
 <meta property="article:author" content="Link Zhang">
+<meta property="article:tag" content="raft">
+<meta property="article:tag" content="cap">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://link-zhang.github.io/images/distributed/00.png">
 
 
-<link rel="canonical" href="http://link-zhang.github.io/about/">
+<link rel="canonical" href="http://link-zhang.github.io/2022/09/07/distributed/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"en","comments":"","permalink":"http://link-zhang.github.io/about/index.html","path":"about/index.html","title":"关于博主"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://link-zhang.github.io/2022/09/07/distributed/","path":"2022/09/07/distributed/","title":"Distributed Algorithm"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>关于博主 | Link Zhang
-</title>
+<title>Distributed Algorithm | Link Zhang</title>
   
 
 
@@ -149,7 +155,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%AA%E4%BA%BA%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">个人简介</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Raft"><span class="nav-number">1.</span> <span class="nav-text">Raft</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E5%8A%A8%E7%94%BB"><span class="nav-number">1.1.</span> <span class="nav-text">算法动画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%92%E8%89%B2"><span class="nav-number">1.2.</span> <span class="nav-text">角色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B6%85%E6%97%B6%E6%97%B6%E9%97%B4"><span class="nav-number">1.3.</span> <span class="nav-text">超时时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AA%E4%BA%BA%E7%90%86%E8%A7%A3"><span class="nav-number">1.4.</span> <span class="nav-text">个人理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%84%9F%E8%A7%89%E5%AD%98%E5%9C%A8%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="nav-number">1.5.</span> <span class="nav-text">感觉存在的缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB"><span class="nav-number">1.6.</span> <span class="nav-text">状态转移</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Terms"><span class="nav-number">1.7.</span> <span class="nav-text">Terms</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%80%E8%87%B4%E8%BD%AF%E4%BB%B6%E6%AF%94%E8%BE%83"><span class="nav-number">2.</span> <span class="nav-text">分布式一致软件比较</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CAP%E5%8E%9F%E5%88%99"><span class="nav-number">3.</span> <span class="nav-text">CAP原则</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -213,35 +219,140 @@
 </noscript>
 
 
-    <div class="main-inner page posts-expand">
+    <div class="main-inner post posts-expand">
 
 
-    
-    
-    
-    <div class="post-block" lang="en"><header class="post-header">
+  
 
-<h1 class="post-title" itemprop="name headline">关于博主
-</h1>
 
-<div class="post-meta-container">
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://link-zhang.github.io/2022/09/07/distributed/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/link.png">
+      <meta itemprop="name" content="Link Zhang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Link Zhang">
+      <meta itemprop="description" content="What I wrote is not codes, but bugs.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Distributed Algorithm | Link Zhang">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Distributed Algorithm
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>1 mins.</span>
+    </span>
 </div>
 
-</header>
+        </div>
+      </header>
 
-      
-      
-      <div class="post-body">
-          <h1 id="个人简介"><a href="#个人简介" class="headerlink" title="个人简介"></a>个人简介</h1><p>本人半个死肥宅，热爱塞尔达传说、仙剑奇侠传、诛仙，喜欢游戏、小说，尝鲜新技术。无奈本人记忆属鱼的，就将博客也当作半个云笔记吧，哈哈！</p>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Raft"><a href="#Raft" class="headerlink" title="Raft"></a>Raft</h1><h2 id="算法动画"><a href="#算法动画" class="headerlink" title="算法动画"></a><a target="_blank" rel="noopener" href="http://thesecretlivesofdata.com/raft">算法动画</a></h2><span id="more"></span>
 
-      </div>
-      
-      
-      
+<h2 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h2><ol>
+<li>Follower</li>
+<li>Candidate</li>
+<li>Leader</li>
+</ol>
+<h2 id="超时时间"><a href="#超时时间" class="headerlink" title="超时时间"></a>超时时间</h2><ul>
+<li><strong>election</strong> timeout：Follower等待时间，如果啥都没发生，自己变成Candidate</li>
+<li><strong>heartbeat</strong> timeout：Follower等待时间，如果没收到心跳，自己变成Candidate</li>
+</ul>
+<h2 id="个人理解"><a href="#个人理解" class="headerlink" title="个人理解"></a>个人理解</h2><p>大部分情况2个election timeout内可以选举成功（一次split vote），一个读写可以在2个heartbeat timeout内完成</p>
+<h2 id="感觉存在的缺点"><a href="#感觉存在的缺点" class="headerlink" title="感觉存在的缺点"></a>感觉存在的缺点</h2><ol>
+<li>所有人都要知道一共有多少人</li>
+<li>每次心跳需要发送Leader的所有状态</li>
+<li>一个3人集群中，2个人疯了，整个集群就完了（容忍不了拜占庭错误）n ≥ 3t+1</li>
+</ol>
+<h2 id="状态转移"><a href="#状态转移" class="headerlink" title="状态转移"></a>状态转移</h2><p><img src="/images/distributed/00.png" alt="Raft状态转移"></p>
+<h2 id="Terms"><a href="#Terms" class="headerlink" title="Terms"></a>Terms</h2><p><img src="/images/distributed/01.png" alt="Raft Terms"></p>
+<h1 id="分布式一致软件比较"><a href="#分布式一致软件比较" class="headerlink" title="分布式一致软件比较"></a>分布式一致软件比较</h1><p><img src="/images/distributed/02.png" alt="分布式一致软件比较"></p>
+<h1 id="CAP原则"><a href="#CAP原则" class="headerlink" title="CAP原则"></a>CAP原则</h1><p><img src="/images/distributed/03.png" alt="CAP原则"></p>
+
     </div>
 
     
     
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee.</div>
+  <button>
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="Link Zhang WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="Link Zhang Alipay">
+        <span>Alipay</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/raft/" rel="tag"># raft</a>
+              <a href="/tags/cap/" rel="tag"># cap</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/09/07/network/" rel="prev" title="Network">
+                  <i class="fa fa-chevron-left"></i> Network
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/09/07/consul/" rel="next" title="Consul">
+                  Consul <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
 
 
 </div>

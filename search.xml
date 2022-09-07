@@ -1,6 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Consul</title>
+    <url>/2022/09/07/consul/</url>
+    <content><![CDATA[<h1 id="Consul-Commands"><a href="#Consul-Commands" class="headerlink" title="Consul Commands"></a>Consul Commands</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">consul agent -dev -ui -client=0.0.0.0</span><br><span class="line">consul agent -server -bootstrap-expect=3  -data-dir=/tmp/consul -ui -client=0.0.0.0 -<span class="built_in">bind</span>=172.17.0.2 -node=server1</span><br><span class="line">consul agent -data-dir=/tmp/consul -ui -client=0.0.0.0 -node=client1</span><br><span class="line">consul <span class="built_in">join</span> 172.17.0.2</span><br><span class="line">consul members</span><br><span class="line">consul operator raft list-peers</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+
+<h1 id="Consul-Ports"><a href="#Consul-Ports" class="headerlink" title="Consul Ports"></a>Consul Ports</h1><table>
+<thead>
+<tr>
+<th align="center">端口号</th>
+<th align="center">协议</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">8300</td>
+<td align="center">TCP</td>
+<td align="center">Agent Server处理其它agent的请求</td>
+</tr>
+<tr>
+<td align="center">8301</td>
+<td align="center">TCP、UDP</td>
+<td align="center">Agent处理lan中的gossip</td>
+</tr>
+<tr>
+<td align="center">8302</td>
+<td align="center">TCP、UDP</td>
+<td align="center">Agent处理wan中的gossip</td>
+</tr>
+<tr>
+<td align="center">8400</td>
+<td align="center">TCP</td>
+<td align="center">Agent处理CLI来的RPC请求</td>
+</tr>
+<tr>
+<td align="center">8500</td>
+<td align="center">TCP</td>
+<td align="center">Agent处理HTTP的CLI</td>
+</tr>
+<tr>
+<td align="center">8600</td>
+<td align="center">TCP、UDP</td>
+<td align="center">Agent处理DNS查询</td>
+</tr>
+</tbody></table>
+<h1 id="Consul结构图"><a href="#Consul结构图" class="headerlink" title="Consul结构图"></a>Consul结构图</h1><p><img src="/images/consul/00.png" alt="Consul结构图"></p>
+]]></content>
+      <categories>
+        <category>Note</category>
+      </categories>
+      <tags>
+        <tag>consul</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Distributed Algorithm</title>
+    <url>/2022/09/07/distributed/</url>
+    <content><![CDATA[<h1 id="Raft"><a href="#Raft" class="headerlink" title="Raft"></a>Raft</h1><h2 id="算法动画"><a href="#算法动画" class="headerlink" title="算法动画"></a><a href="http://thesecretlivesofdata.com/raft">算法动画</a></h2><span id="more"></span>
+
+<h2 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h2><ol>
+<li>Follower</li>
+<li>Candidate</li>
+<li>Leader</li>
+</ol>
+<h2 id="超时时间"><a href="#超时时间" class="headerlink" title="超时时间"></a>超时时间</h2><ul>
+<li><strong>election</strong> timeout：Follower等待时间，如果啥都没发生，自己变成Candidate</li>
+<li><strong>heartbeat</strong> timeout：Follower等待时间，如果没收到心跳，自己变成Candidate</li>
+</ul>
+<h2 id="个人理解"><a href="#个人理解" class="headerlink" title="个人理解"></a>个人理解</h2><p>大部分情况2个election timeout内可以选举成功（一次split vote），一个读写可以在2个heartbeat timeout内完成</p>
+<h2 id="感觉存在的缺点"><a href="#感觉存在的缺点" class="headerlink" title="感觉存在的缺点"></a>感觉存在的缺点</h2><ol>
+<li>所有人都要知道一共有多少人</li>
+<li>每次心跳需要发送Leader的所有状态</li>
+<li>一个3人集群中，2个人疯了，整个集群就完了（容忍不了拜占庭错误）n ≥ 3t+1</li>
+</ol>
+<h2 id="状态转移"><a href="#状态转移" class="headerlink" title="状态转移"></a>状态转移</h2><p><img src="/images/distributed/00.png" alt="Raft状态转移"></p>
+<h2 id="Terms"><a href="#Terms" class="headerlink" title="Terms"></a>Terms</h2><p><img src="/images/distributed/01.png" alt="Raft Terms"></p>
+<h1 id="分布式一致软件比较"><a href="#分布式一致软件比较" class="headerlink" title="分布式一致软件比较"></a>分布式一致软件比较</h1><p><img src="/images/distributed/02.png" alt="分布式一致软件比较"></p>
+<h1 id="CAP原则"><a href="#CAP原则" class="headerlink" title="CAP原则"></a>CAP原则</h1><p><img src="/images/distributed/03.png" alt="CAP原则"></p>
+]]></content>
+      <categories>
+        <category>Note</category>
+      </categories>
+      <tags>
+        <tag>raft</tag>
+        <tag>cap</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>First Blog</title>
     <url>/2016/03/20/first-blog/</url>
     <content><![CDATA[<p><strong>This is my first blog to mark down how to set up the Blog. Here are the details:</strong></p>
@@ -263,6 +350,51 @@ Rel(SystemC, customerA, &quot;Sends e-mails to&quot;)
       </tags>
   </entry>
   <entry>
+    <title>Network</title>
+    <url>/2022/09/07/network/</url>
+    <content><![CDATA[<h1 id="Cisco-ASA"><a href="#Cisco-ASA" class="headerlink" title="Cisco ASA"></a>Cisco ASA</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">more system:running-config</span><br><span class="line">username <span class="built_in">test</span> password KyehaxnWdz7u4xvd encrypted</span><br><span class="line">username <span class="built_in">test</span> attributes</span><br><span class="line"> service-type remote-access</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+
+<h1 id="H3C-PBR"><a href="#H3C-PBR" class="headerlink" title="H3C PBR"></a>H3C PBR</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">policy-based-route swift permit node 10</span><br><span class="line"> if-match acl name swift</span><br><span class="line"> apply next-hop 10.31.255.1</span><br><span class="line">interface GigabitEthernet1/0/48</span><br><span class="line"> port link-mode route</span><br><span class="line"> ip address 10.31.252.202 255.255.255.0</span><br><span class="line"> ip policy-based-route swift</span><br><span class="line">ip <span class="built_in">local</span> policy-based-route swift</span><br><span class="line">acl advanced name swift</span><br><span class="line"> rule 10 permit ip <span class="built_in">source</span> 10.31.251.152 0 destination 149.134.0.0 0.0.255.255</span><br><span class="line"> rule 20 permit ip <span class="built_in">source</span> 10.31.251.153 0 destination 149.134.0.0 0.0.255.255</span><br><span class="line"><span class="comment">#</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Hillstone"><a href="#Hillstone" class="headerlink" title="Hillstone"></a>Hillstone</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">terminal length 0</span><br><span class="line">console <span class="built_in">timeout</span> 0</span><br><span class="line">ssh <span class="built_in">timeout</span> 60</span><br><span class="line">https client-auth <span class="built_in">enable</span></span><br><span class="line">https client-auth trust-domain</span><br><span class="line">https client-auth match cn</span><br><span class="line">l2-nonip-action drop</span><br><span class="line">forward-tagged-packet</span><br><span class="line">forward-double-tagged-packet</span><br><span class="line">arp-l2mode</span><br><span class="line"><span class="built_in">exec</span> vrouter <span class="built_in">enable</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Cisco-AnyConnect-VPN"><a href="#Cisco-AnyConnect-VPN" class="headerlink" title="Cisco AnyConnect VPN"></a>Cisco AnyConnect VPN</h1><table>
+<thead>
+<tr>
+<th align="center">Protocol</th>
+<th align="center">Cisco AnyConnect Client Port</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">TLS (SSL)</td>
+<td align="center">TCP 443</td>
+</tr>
+<tr>
+<td align="center">SSL Redirection</td>
+<td align="center">TCP 80</td>
+</tr>
+<tr>
+<td align="center">DTLS</td>
+<td align="center">UDP 443</td>
+</tr>
+<tr>
+<td align="center">IPsec&#x2F;IKEv2</td>
+<td align="center">UDP 500, UDP 4500</td>
+</tr>
+</tbody></table>
+<h1 id="Juniper"><a href="#Juniper" class="headerlink" title="Juniper"></a>Juniper</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">set</span> system host-name vSRX</span><br><span class="line"><span class="built_in">set</span> system domain-name www.juniper.net</span><br><span class="line"><span class="built_in">set</span> system root-authentication plain-text-password root@123</span><br><span class="line"><span class="built_in">set</span> system name-server 10.1.1.254</span><br><span class="line"><span class="built_in">set</span> system login user admin class super-user authentication plain-text-password  root@123</span><br><span class="line"><span class="built_in">set</span> system services ssh protocol-version v2</span><br><span class="line"><span class="built_in">set</span> system services telnet</span><br><span class="line"><span class="built_in">set</span> system services web-management http port 8080</span><br><span class="line"><span class="built_in">set</span> system services web-management http interface ge-0/0/0.0</span><br><span class="line"><span class="built_in">set</span> interfaces ge-0/0/0 unit 0 family inet address 10.1.1.1/24</span><br><span class="line"><span class="built_in">set</span> interfaces ge-0/0/1 unit 0 family inet address 1.1.1.1/24</span><br><span class="line"><span class="built_in">set</span> interfaces ge-0/0/2 unit 0 family inet address 2.1.1.1/24</span><br><span class="line"><span class="built_in">set</span> security policies</span><br><span class="line"><span class="built_in">set</span> security zones security-zone inside interfaces ge-0/0/1.0 host-inbound-traffic system-services ping</span><br><span class="line"><span class="built_in">set</span> security zones security-zone outside interfaces ge-0/0/2.0 host-inbound-traffic system-services ping</span><br><span class="line"><span class="built_in">set</span> security zones security-zone mgt interfaces ge-0/0/0.0 host-inbound-traffic system-services ping</span><br><span class="line"><span class="built_in">set</span> security zones security-zone mgt interfaces ge-0/0/0.0 host-inbound-traffic system-services telnet</span><br><span class="line"><span class="built_in">set</span> security zones security-zone mgt interfaces ge-0/0/0.0 host-inbound-traffic system-services ssh</span><br><span class="line"><span class="built_in">set</span> chassis cluster cluster-id 1 node 0 reboot</span><br><span class="line"><span class="built_in">set</span> chassis cluster cluster-id 1 node 1 reboot</span><br><span class="line">show chassis cluster status</span><br><span class="line"></span><br><span class="line">delete interfaces</span><br><span class="line">delete security </span><br><span class="line">delete system services web-management http interface ge-0/0/0.0</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> chassis cluster cluster-id 1 node 0 reboot</span><br><span class="line"><span class="built_in">set</span> chassis cluster cluster-id 1 node 1 reboot</span><br><span class="line">show chassis cluster status</span><br><span class="line"></span><br><span class="line">request chassis cluster failover redundancy-group 0 node 1  </span><br><span class="line">request chassis cluster failover redundancy-group 1 node 1  </span><br></pre></td></tr></table></figure>
+
+<h1 id="Cisco"><a href="#Cisco" class="headerlink" title="Cisco"></a>Cisco</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">exec-timeout 0 0</span><br><span class="line">logging synchronous</span><br><span class="line">no ip domain lookup</span><br><span class="line"><span class="built_in">enable</span> secret 0 cisco</span><br><span class="line">service password-encryption</span><br><span class="line">transport input ssh telnet</span><br><span class="line">hostname R1</span><br><span class="line">ip domain name cisco.com</span><br><span class="line">crypto key generate rsa general-keys modulus 4096 </span><br><span class="line">ip ssh version 2</span><br><span class="line">ip ssh time-out 120</span><br><span class="line">ip ssh authentication-retries 5</span><br><span class="line">username cisco password 0 cisco</span><br><span class="line">encapsulation ppp</span><br><span class="line">ppp authentication pap</span><br><span class="line">ppp pap sent-username R1 password cisco</span><br><span class="line">encapsulation ppp</span><br><span class="line">ppp authentication chap</span><br><span class="line">ip dhcp pool 172.16.1.0/24</span><br><span class="line"> network 172.16.1.0 255.255.255.0</span><br><span class="line"> default-router 10.1.1.1 </span><br><span class="line">ip dhcp excluded-address 10.1.1.1 </span><br><span class="line">ip dhcp snooping vlan 10 </span><br><span class="line">switchport trunk encapsulation dot1q </span><br><span class="line">switchport mode trunk</span><br><span class="line">ipv6 address 2023::2/64</span><br><span class="line">ipv6 nd prefix 2023::/64 600 599</span><br><span class="line">ipv6 nd ra lifetime 600</span><br><span class="line">ipv6 nd ra interval 4</span><br><span class="line">ipv6 address autoconfig</span><br><span class="line">ipv6 nd ra suppress all  </span><br><span class="line">ipv6 unicast-routing</span><br><span class="line">ipv6 rip Ender <span class="built_in">enable</span></span><br><span class="line">show ipv6 rip database</span><br><span class="line">router eigrp 90</span><br><span class="line">network 10.1.6.0 0.0.0.255</span><br><span class="line">show ip eigrp neighbors detail</span><br><span class="line">ip summary-address eigrp 90 0.0.0.0/0</span><br><span class="line">router ospf 110</span><br><span class="line"> router-id 44.1.1.1</span><br><span class="line"> network 10.1.1.0 0.0.0.255 area 2</span><br><span class="line"> network 44.1.1.1 0.0.0.0 area 2</span><br><span class="line">show ip ospf border-routers</span><br><span class="line">switchport trunk encapsulation dot1q</span><br><span class="line">switchport trunk native vlan 10</span><br><span class="line">switchport mode trunk</span><br><span class="line">switchport nonegotiate</span><br><span class="line">vlan dot1q tag native</span><br><span class="line">vtp version 2</span><br><span class="line">vtp domain QYT</span><br><span class="line">vtp password cisco</span><br><span class="line">vtp mode transparent</span><br><span class="line">vtp pruning</span><br><span class="line">vtp primary vlan</span><br><span class="line">channel-group 10 mode active</span><br><span class="line">channel-group 10 mode passive</span><br><span class="line">show etherchannel summary</span><br><span class="line">show etherchannel load-balance</span><br><span class="line">no switch-port</span><br><span class="line">ip add 1.1.1.253 255.255.255.0</span><br><span class="line">channel-group 10 mode on</span><br><span class="line"><span class="built_in">test</span> interfaces port-channel 10</span><br><span class="line">show spanning-tree bridge detail </span><br><span class="line">show spanning-tree bridge priority </span><br><span class="line">show spanning-tree vlan 20</span><br><span class="line">spanning-tree uplinkfast </span><br><span class="line">debug spanning-tree switch uplinkfast</span><br><span class="line">spanning-tree mode rapid-pvst</span><br><span class="line">spanning-tree mode mst</span><br><span class="line">spanning-tree portfast </span><br><span class="line">spanning-tree bpduguard <span class="built_in">enable</span> </span><br><span class="line">errdisable recovery cause bpduguard</span><br><span class="line">spanning-tree bpdufilter <span class="built_in">enable</span> </span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Note</category>
+      </categories>
+      <tags>
+        <tag>network</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Note</title>
     <url>/2022/09/06/note/</url>
     <content><![CDATA[<blockquote class="blockquote-center">
@@ -360,6 +492,26 @@ Rel(SystemC, customerA, &quot;Sends e-mails to&quot;)
       </categories>
       <tags>
         <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>React</title>
+    <url>/2022/09/07/react/</url>
+    <content><![CDATA[<h1 id="React-Diff"><a href="#React-Diff" class="headerlink" title="React Diff"></a>React Diff</h1><p><img src="/images/react/00.png" alt="React Diff 01"></p>
+<span id="more"></span>
+<p><img src="/images/react/01.png" alt="React Diff 02"></p>
+<h1 id="React组件生命周期"><a href="#React组件生命周期" class="headerlink" title="React组件生命周期"></a>React组件生命周期</h1><p><img src="/images/react/02.png" alt="React组件生命周期"></p>
+<h1 id="React-Flow"><a href="#React-Flow" class="headerlink" title="React Flow"></a>React Flow</h1><p><img src="/images/react/03.png" alt="React Flow"></p>
+<h1 id="SSR和CSR"><a href="#SSR和CSR" class="headerlink" title="SSR和CSR"></a>SSR和CSR</h1><p><img src="/images/react/04.png" alt="SSR VS CSR"></p>
+<h1 id="React组件"><a href="#React组件" class="headerlink" title="React组件"></a>React组件</h1><p><img src="/images/react/05.png" alt="React组件"></p>
+<h1 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h1><p><img src="/images/react/06.png" alt="Redux"></p>
+<h1 id="Redux-Data-Flow"><a href="#Redux-Data-Flow" class="headerlink" title="Redux Data Flow"></a>Redux Data Flow</h1><p><img src="/images/react/07.png" alt="Redux Data Flow"></p>
+]]></content>
+      <categories>
+        <category>Note</category>
+      </categories>
+      <tags>
+        <tag>react</tag>
       </tags>
   </entry>
 </search>
